@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Tambah mahasiswa{% endblock %}
+{% block content %}
+<div class="head"><h2>Tambah mahasiswa</h2></div>
+<form method="post" action="/insert" class="card form">
+  <div class="field">
+    <label for="nim">NIM</label>
+    <input id="nim" name="nim" required autofocus>
+  </div>
+  <div class="field">
+    <label for="nama">Nama lengkap</label>
+    <input id="nama" name="nama" required>
+  </div>
+  <div class="grid3 field">
+    <div><label for="tugas">Tugas</label><input id="tugas" name="tugas" type="number" step="0.01" min="0" max="100" required></div>
+    <div><label for="uts">UTS</label><input id="uts" name="uts" type="number" step="0.01" min="0" max="100" required></div>
+    <div><label for="uas">UAS</label><input id="uas" name="uas" type="number" step="0.01" min="0" max="100" required></div>
+  </div>
+  <div class="actions">
+    <button type="submit" class="btn primary">Simpan</button>
+    <a href="/mahasiswa" class="btn">Batal</a>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Data mahasiswa{% endblock %}
+{% block content %}
+<div class="head">
+  <h2>Data mahasiswa</h2>
+  <a href="/insert" class="btn primary">Tambah mahasiswa</a>
+</div>
+<div class="card table-wrap">
+  {% if mahasiswa %}
+  <table>
+    <thead>
+      <tr><th>NIM</th><th>Nama</th><th class="num">Tugas</th><th class="num">UTS</th><th class="num">UAS</th><th class="num">Rata-rata</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for m in mahasiswa %}
+      <tr>
+        <td>{{ m[0] }}</td>
+        <td>{{ m[1] }}</td>
+        <td class="num">{{ m[2] }}</td>
+        <td class="num">{{ m[3] }}</td>
+        <td class="num">{{ m[4] }}</td>
+        <td class="num">{{ "%.1f"|format((m[2] + m[3] + m[4]) / 3) }}</td>
+        <td class="act">
+          <a href="/edit/{{ m[0] }}" class="btn sm">Ubah</a>
+          <form method="post" action="/delete/{{ m[0] }}" onsubmit="return confirm('Hapus {{ m[1] }}?')">
+            <button type="submit" class="btn sm danger">Hapus</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty">
+    <p>Belum ada data mahasiswa.</p>
+    <a href="/insert" class="btn primary">Tambah mahasiswa pertama</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

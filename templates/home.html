@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ data.judul }}{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>{{ data.judul }}<br>{{ data.kampus }}</h1>
+  <p class="lead">{{ data.deskripsi }}</p>
+  <div class="actions">
+    <a href="/mahasiswa" class="btn primary">Lihat data mahasiswa</a>
+    <a href="/insert" class="btn">Tambah mahasiswa</a>
+  </div>
+</section>
+{% endblock %}
